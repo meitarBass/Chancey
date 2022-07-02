@@ -7,10 +7,24 @@
 
 import SwiftUI
 
+@State private var numberOfGuesses = 3
+
+let ranges = [100, 300 ,500]
+let triesLeft = [3,5,10]
+
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        Form {
+            Section {
+                Picker("Number Of Gueeses", selection: numberOfGuesses) {
+                    ForEach(lengthTypes, id: \.self) {
+                        Text($0)
+                    }
+                }.pickerStyle(.segmented)
+            } header: {
+                Text("From:")
+            }
+        }
     }
 }
 
